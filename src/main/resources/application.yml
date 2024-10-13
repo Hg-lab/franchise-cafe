@@ -9,12 +9,13 @@ spring:
   sql:
     init:
       mode: always
-      data-locations: classpath:/db/migration.sql
+#      data-locations: classpath:/db/migration.sql
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: validate
+#      ddl-auto: validate
+      ddl-auto: create
 #      naming:
 #        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
     properties:

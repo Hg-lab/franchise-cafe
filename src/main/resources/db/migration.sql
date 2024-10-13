@@ -73,3 +73,40 @@ VALUES
 (20, '앱)홈카페 세트', '홈카페 세트', '집에서 즐길 수 있는 커피 세트', 23, true, true, 'MENU', 20000),
 -- Bottled Beverages
 (21, '앱)콜드브루 병음료', '콜드브루 병음료', '콜드브루를 병에 담은 음료', 24, true, true, 'MENU', 5500);
+
+-- Product category for SET menus
+INSERT INTO product_category (id, name, display_Name, depth, parent_id)
+VALUES
+    (25, 'SET', '세트', 1, NULL),
+    (26, 'SET', '세트', 1, 25);
+
+-- Set menu products
+INSERT INTO product (id, name, display_name, description, category_id, is_Seasonal, is_Recommended, product_type, default_price)
+VALUES
+    -- Set menus
+    (22, '앱)브런치 세트', '브런치 세트', '아메리카노와 크루아상이 포함된 세트', 25, true, true, 'SET', 10000),
+    (23, '앱)디저트 세트', '디저트 세트', '티라미수 케이크와 아메리카노가 포함된 세트', 25, true, true, 'SET', 12000),
+    (24, '앱)콜드브루 세트', '콜드브루 세트', '콜드브루 블랙과 크루아상이 포함된 세트', 25, true, true, 'SET', 9500),
+    (25, '앱)프라페 세트', '프라페 세트', '카라멜 프라페와 크루아상이 포함된 세트', 25, true, false, 'SET', 11000),
+    (26, '앱)티 세트', '티 세트', '얼그레이 티와 크루아상이 포함된 세트', 25, false, true, 'SET', 9000);
+
+-- Set menu 구성품 추가
+INSERT INTO set_product_menu_product (set_product_id, menu_product_id)
+VALUES
+    -- 브런치 세트: 아메리카노와 크루아상
+    (22, 2),  -- 아메리카노
+    (22, 17), -- 크루아상
+    -- 디저트 세트: 아메리카노와 티라미수 케이크
+    (23, 2),  -- 아메리카노
+    (23, 16), -- 티라미수 케이크
+    -- 콜드브루 세트: 콜드브루 블랙과 크루아상
+    (24, 5),  -- 콜드브루 블랙
+    (24, 17), -- 크루아상
+    -- 프라페 세트: 카라멜 프라페와 크루아상
+    (25, 10), -- 카라멜 프라페
+    (25, 17), -- 크루아상
+    -- 티 세트: 얼그레이 티와 크루아상
+    (26, 14), -- 얼그레이 티
+    (26, 17); -- 크루아상
+
+

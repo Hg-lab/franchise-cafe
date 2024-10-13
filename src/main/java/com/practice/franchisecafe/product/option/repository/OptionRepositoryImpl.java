@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-import static com.practice.franchisecafe.option.QOption.option;
-import static com.practice.franchisecafe.option.QProductOption.productOption;
+import static com.practice.franchisecafe.product.option.QOption.option;
+import static com.practice.franchisecafe.product.option.QProductOption.productOption;
 
 @RequiredArgsConstructor
 public class OptionRepositoryImpl implements OptionRepositoryCustom {

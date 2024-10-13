@@ -7,8 +7,8 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-import static com.practice.franchisecafe.product.QProduct.product;
-import static com.practice.franchisecafe.product.QProductCategory.productCategory;
+import static com.practice.franchisecafe.product.product.QProduct.product;
+import static com.practice.franchisecafe.product.product.QProductCategory.productCategory;
 
 @RequiredArgsConstructor
 public class ProductRepositoryImpl implements ProductRepositoryCustom{
