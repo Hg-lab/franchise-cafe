@@ -4,10 +4,7 @@ import com.practice.franchisecafe.product.product.dto.ProductResponse;
 import com.practice.franchisecafe.product.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,4 +23,11 @@ public class ProductController {
         return ResponseEntity.ok().body(productResponses);
     }
 
+    @GetMapping("/{productId}/options")
+    public ResponseEntity<List<ProductResponse>> getProductOptions(
+            @PathVariable Long productId)
+    {
+        final List<ProductResponse> productResponses = productService.getProductOptions(productId);
+        return ResponseEntity.ok().body(productResponses);
+    }
 }
