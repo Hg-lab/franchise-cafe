@@ -6,5 +6,4 @@ import java.util.List;
 
 public interface ProductRepositoryCustom {
     List<Product> findAllByCategory(Long category);
-
 }

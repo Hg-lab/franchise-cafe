@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface OptionRepositoryCustom {
 
-    List<Option> findOptionByProductId(Long productId);
+    List<Option> findOptionsByProductId(Long productId);
 
 }

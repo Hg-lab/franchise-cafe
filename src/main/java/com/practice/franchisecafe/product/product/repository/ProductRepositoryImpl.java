@@ -11,12 +11,13 @@ import static com.practice.franchisecafe.product.product.QProduct.product;
 import static com.practice.franchisecafe.product.product.QProductCategory.productCategory;
 
 @RequiredArgsConstructor
-public class ProductRepositoryImpl implements ProductRepositoryCustom{
+public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Product> findAllByCategory(@Param("category_id") Long categoryId) {
+    public List<Product> findAllByCategory(@Param("categoryId") Long categoryId) {
+
         return queryFactory.selectFrom(product)
                 .leftJoin(product.category, productCategory).fetchJoin()
                 .where(categoryId != null ? product.category.id.eq(categoryId) : null)

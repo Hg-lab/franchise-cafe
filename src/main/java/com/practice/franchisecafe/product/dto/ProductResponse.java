@@ -1,4 +1,4 @@
-package com.practice.franchisecafe.product.product.dto;
+package com.practice.franchisecafe.product.dto;
 
 import com.practice.franchisecafe.product.product.Product;
 import lombok.Getter;

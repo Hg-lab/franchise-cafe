@@ -1,12 +1,16 @@
-package com.practice.franchisecafe.product.product.controller;
+package com.practice.franchisecafe.product.controller;
 
-import com.practice.franchisecafe.product.product.dto.ProductResponse;
-import com.practice.franchisecafe.product.product.service.ProductService;
+import com.practice.franchisecafe.product.dto.ProductOptionsResponse;
+import com.practice.franchisecafe.product.dto.ProductResponse;
+import com.practice.franchisecafe.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.http.MediaType.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,11 +27,12 @@ public class ProductController {
         return ResponseEntity.ok().body(productResponses);
     }
 
-    @GetMapping("/{productId}/options")
-    public ResponseEntity<List<ProductResponse>> getProductOptions(
-            @PathVariable Long productId)
+    @GetMapping(value = "/{productId}/options", produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<ProductOptionsResponse> getProductOptions(
+            @PathVariable("productId") Long productId)
     {
-        final List<ProductResponse> productResponses = productService.getProductOptions(productId);
-        return ResponseEntity.ok().body(productResponses);
+        return ResponseEntity.ok().body(
+                productService.getProductOptions(productId)
+        );
     }
 }

@@ -110,3 +110,34 @@ VALUES
     (26, 17); -- 크루아상
 
 
+-- 옵션 데이터 (Option 테이블에 대한 데이터)
+INSERT INTO options (id, name, display_name, is_required, is_multiple_choice)
+VALUES
+    (1, 'USE_PERSONAL_TUMBLER', '개인 텀블러 사용', true, false),
+    (2, 'SHOT_SELECTION', '샷 선택', false, false),
+    (3, 'SWEETNESS_LEVEL', '당도 선택', false, false),
+    (4, 'TOPPING_SELECTION', '토핑 선택', false, true),
+    (5, 'ADD_WHIPPING', '휘핑 추가', false, false),
+    (6, 'CINNAMON_SELECTION', '시나몬 선택', false, false),
+    (7, 'HEALTHY_OPTION', '건강 옵션 선택', false, true),
+    (8, 'ADD_HONEY', '꿀 추가', false, false),
+    (9, 'ADD_DECAF_SHOT', '디카페인 샷 추가', false, false);
+
+
+-- ProductOption 데이터 (Product와 Option을 연결하는 데이터)
+INSERT INTO product_option (id, product_id, option_id)
+VALUES
+    (1, 1, 1), (2, 1, 2), -- 에스프레소
+    (3, 2, 1), (4, 2, 2), -- 아메리카노
+    (5, 3, 1), (6, 3, 2), (7, 3, 3), (8, 3, 5), (9, 3, 4), -- 바닐라 라떼
+    (10, 4, 1), (11, 4, 2), (12, 4, 3), (13, 4, 5), -- 카페 라떼
+    (14, 5, 1), (15, 5, 7), (16, 5, 8), -- 콜드브루 블랙
+    (17, 6, 1), (18, 6, 7), (19, 6, 8), (20, 6, 5), -- 콜드브루 라떼
+    (21, 7, 1), (22, 7, 2), (23, 7, 9), -- 디카페인 에스프레소
+    (24, 8, 1), (25, 8, 3), -- 레몬 에이드
+    (26, 9, 1), (27, 9, 3), -- 청포도 에이드
+    (28, 10, 1), (29, 10, 4), (30, 10, 5), -- 카라멜 프라페
+    (31, 11, 1), (32, 11, 3), -- 딸기 스무디
+    (33, 12, 1), (34, 12, 3), (35, 12, 7), -- 망고 주스
+    (36, 13, 1), (37, 13, 2), (38, 13, 5), (39, 13, 4), (40, 13, 3), (41, 13, 9), -- 초코 라떼
+    (42, 15, 1), (43, 15, 7); -- 페퍼민트 티

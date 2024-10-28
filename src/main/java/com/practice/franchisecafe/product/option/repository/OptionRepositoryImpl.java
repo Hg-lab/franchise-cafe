@@ -17,11 +17,13 @@ public class OptionRepositoryImpl implements OptionRepositoryCustom {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Option> findOptionByProductId(Long productId) {
+    public List<Option> findOptionsByProductId(final Long productId) {
 
-        return queryFactory.selectFrom(option)
+        return queryFactory
+                .selectFrom(option)
                 .join(productOption).on(option.id.eq(productOption.option.id))
-                .where(productOption.product.id.eq(productId)).fetch();
+                .where(productOption.product.id.eq(productId))
+                .fetch();
     }
 
     @Modifying

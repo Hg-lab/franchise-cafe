@@ -2,6 +2,7 @@ package com.practice.franchisecafe.product.option;
 
 import com.practice.franchisecafe.common.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 import static jakarta.persistence.GenerationType.AUTO;
 
 @Entity
+@Getter
 @Table(name = "options")
 public class Option extends BaseEntity {
 
