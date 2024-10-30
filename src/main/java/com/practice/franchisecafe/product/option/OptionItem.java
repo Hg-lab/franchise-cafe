@@ -4,12 +4,8 @@ import jakarta.persistence.*;
 
 import static jakarta.persistence.GenerationType.*;
 
-@Entity
+@Embeddable
 public class OptionItem {
-
-    @Id
-    @GeneratedValue(strategy = AUTO)
-    private Long id;
 
     private String name;
 
@@ -19,7 +15,4 @@ public class OptionItem {
 
     private boolean isDefault;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "option_id")
-    private Option option;
 }

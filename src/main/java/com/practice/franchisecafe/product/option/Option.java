@@ -25,7 +25,4 @@ public class Option extends BaseEntity {
     private boolean isRequired;
 
     private boolean isMultipleChoice;
-
-    @OneToMany(mappedBy = "option")
-    private List<OptionItem> optionItems = new ArrayList<>();
 }
