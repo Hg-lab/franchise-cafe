@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bar</title>
+    <style>
+        #progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        #progress-bar {
+            width: 0%;
+            height: 30px;
+            background-color: #4caf50;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Task Progress</h2>
+<button onclick="startProgress()">Start Task</button>
+<div id="progress-container">
+    <div id="progress-bar">0%</div>
+</div>
+<p id="status">Waiting...</p>
+
+<script>
+    function startProgress() {
+        const eventSource = new EventSource("/progress/stream");
+
+        eventSource.onmessage = function(event) {
+            console.log("Received:", event.data);
+            const progressBar = document.getElementById("progress-bar");
+            const status = document.getElementById("status");
+
+            let progressText = event.data.split(" - ")[0];
+            let progressValue = parseInt(progressText.replace("%", ""));
+
+            progressBar.style.width = progressValue + "%";
+            progressBar.textContent = progressText;
+            status.textContent = event.data;
+
+            if (progressValue >= 100) {
+                eventSource.close();
+            }
+        };
+
+        eventSource.onerror = function(error) {
+            console.error("Error:", error);
+            eventSource.close();
+        };
+    }
+</script>
+
+</body>
+</html>

@@ -20,7 +20,7 @@ class ChatGptServiceTest {
 
         Flux<String> ask = chatGptService.ask(questionRequest);
 
-        System.out.println(ask.blockFirst());
+        ask.subscribe(response -> System.out.println("Received: " + response));
 
     }
 }
